@@ -5,7 +5,7 @@ const Header = () => {
 
   return (
     <header className="header">
-      <div className="logo">My Brand</div>
+      <div className="logo">DeepPrints</div>
       <button className="hamburger" onClick={() => setIsOpen(!isOpen)}>
         ☰
       </button>
