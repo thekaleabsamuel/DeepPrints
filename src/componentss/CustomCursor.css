@@ -1,0 +1,61 @@
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px; /* Reduced gap for a cleaner look */
+  opacity: 0.8; /* Slight transparency for a subtle effect */
+}
+
+.shoe {
+  width: 20px; /* Reduced size for modern aesthetics */
+  height: 20px;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: transform 0.1s ease, opacity 0.1s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); /* Subtle shadow for depth */
+}
+
+.walking .shoe {
+  opacity: 1;
+}
+
+.walking .left-shoe {
+  animation: left-step 0.4s alternate infinite ease-in-out;
+}
+
+.walking .right-shoe {
+  animation: right-step 0.4s alternate infinite ease-in-out;
+}
+
+/* Left Shoe Animation */
+@keyframes left-step {
+  0% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(5px);
+  }
+}
+
+/* Right Shoe Animation */
+@keyframes right-step {
+  0% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
