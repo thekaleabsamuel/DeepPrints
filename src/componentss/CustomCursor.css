@@ -9,53 +9,56 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 5px; /* Reduced gap for a cleaner look */
-  opacity: 0.8; /* Slight transparency for a subtle effect */
+  gap: 5px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.custom-cursor.hidden {
+  opacity: 0; /* Hide cursor when not hovering over the website */
 }
 
 .shoe {
-  width: 20px; /* Reduced size for modern aesthetics */
-  height: 20px;
-  opacity: 0;
+  width: 70px;
+  height: 70px;
+  opacity: 0.4; /* Semi-transparent when idle */
+  transform: translate(-10%, -10%); /* Adjusts to stay centered */
   transform: translateY(5px);
   transition: transform 0.1s ease, opacity 0.1s ease;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); /* Subtle shadow for depth */
 }
 
-.walking .shoe {
-  opacity: 1;
+.custom-cursor.hovering .shoe {
+  opacity: 1; /* Fully visible on hover */
 }
 
-.walking .left-shoe {
-  animation: left-step 0.4s alternate infinite ease-in-out;
+.custom-cursor.hovering .left-shoe {
+  animation: left-step 0.6s alternate infinite ease-in-out;
 }
 
-.walking .right-shoe {
-  animation: right-step 0.4s alternate infinite ease-in-out;
+.custom-cursor.hovering .right-shoe {
+  animation: right-step 0.6s alternate infinite ease-in-out;
 }
 
-/* Left Shoe Animation */
+/* Adjust Walking Animation Keyframes */
 @keyframes left-step {
   0% {
-    transform: translateY(5px);
+    transform: translate(-50%, -40%); /* Moves up slightly from center */
   }
   50% {
-    transform: translateY(-5px);
+    transform: translate(-50%, -60%); /* Moves down slightly from center */
   }
   100% {
-    transform: translateY(5px);
+    transform: translate(-50%, -40%); /* Returns to the original position */
   }
 }
 
-/* Right Shoe Animation */
 @keyframes right-step {
   0% {
-    transform: translateY(-5px);
+    transform: translate(-50%, -60%); /* Moves down slightly from center */
   }
   50% {
-    transform: translateY(5px);
+    transform: translate(-50%, -40%); /* Moves up slightly from center */
   }
   100% {
-    transform: translateY(-5px);
+    transform: translate(-50%, -60%); /* Returns to the original position */
   }
 }

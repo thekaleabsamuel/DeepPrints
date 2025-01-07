@@ -1,0 +1,42 @@
+/* Picket Fence Styles */
+.picket-fence {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #222; /* Background of the "fence" */
+    padding: 1rem;
+    z-index: 1000;
+  }
+  
+  .picket {
+    position: relative;
+    background-color: #8b5e3c; /* Wood color */
+    color: white;
+    font-family: 'Treasure Map', sans-serif; /* Themed font */
+    font-size: 1.2rem;
+    padding: 1rem 0.5rem;
+    width: 60px;
+    height: 120px;
+    border: 2px solid #70422d; /* Wood grain effect */
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .picket:hover {
+    background-color: #a67858; /* Lighter wood tone */
+    transform: scale(1.1);
+  }
+  
+  .picket:active {
+    background-color: #5e3924; /* Darker wood tone */
+  }
+  
+  .picket-fence .picket:not(:last-child) {
+    margin-right: 10px; /* Spacing between pickets */
+  }
+  

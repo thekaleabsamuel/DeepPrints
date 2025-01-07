@@ -1,0 +1,80 @@
+/* General container for directional signs */
+.directional-signs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+  }
+  
+  /* Title styles */
+  .site-title {
+    font-family: 'Treasure Map', sans-serif; /* Thematic font */
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+  
+  /* Directional signs image */
+  .directional-signs {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .sign-image {
+    width: 100%;
+    max-width: 600px; /* Adjust to match your image size */
+    height: auto;
+    display: block;
+  }
+  
+  /* Navigation buttons overlay */
+  .sign-navigation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    pointer-events: none; /* Prevent interactions with the image */
+  }
+  
+  .sign-button {
+    background: none;
+    border: none;
+    font-family: 'Treasure Map', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+    pointer-events: auto; /* Make buttons clickable */
+    transition: transform 0.3s ease;
+    position: absolute;
+  }
+  
+  .sign-button:hover {
+    transform: scale(1.1);
+    color: #ffd700; /* Gold hover effect */
+  }
+  
+  /* Adjust buttons for specific signs */
+  .sign-button-1 {
+    top: 20%; /* Adjust for your image */
+    left: 25%;
+  }
+  
+  .sign-button-2 {
+    top: 40%; /* Adjust for your image */
+    left: 50%;
+  }
+  
+  .sign-button-3 {
+    top: 60%; /* Adjust for your image */
+    right: 20%;
+  }
+  

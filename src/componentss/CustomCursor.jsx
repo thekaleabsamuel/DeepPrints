@@ -4,33 +4,41 @@ import rightShoe from "../assets/right-shoe.png"; // Import PNG
 import "./CustomCursor.css";
 
 const CustomCursor = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isClicking, setIsClicking] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
+    const cursor = document.querySelector(".custom-cursor");
+
     const handleMouseMove = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      cursor.style.left = `${e.pageX}px`;
+      cursor.style.top = `${e.pageY}px`;
     };
 
-    const handleMouseDown = () => setIsClicking(true);
-    const handleMouseUp = () => setIsClicking(false);
+    const handleMouseEnter = () => {
+      setIsHovering(true);
+      cursor.classList.remove("hidden");
+    };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mousedown", handleMouseDown);
-    window.addEventListener("mouseup", handleMouseUp);
+    const handleMouseLeave = () => {
+      setIsHovering(false);
+      cursor.classList.add("hidden");
+    };
+
+    // Add event listeners for mouse movement and hover states
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseenter", handleMouseEnter);
+    document.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mousedown", handleMouseDown);
-      window.removeEventListener("mouseup", handleMouseUp);
+      // Clean up event listeners
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseenter", handleMouseEnter);
+      document.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 
   return (
-    <div
-      className={`custom-cursor ${isClicking ? "walking" : ""}`}
-      style={{ left: `${position.x}px`, top: `${position.y}px` }}
-    >
+    <div className={`custom-cursor ${isHovering ? "hovering" : ""}`}>
       <img src={leftShoe} alt="Left Shoe" className="shoe left-shoe" />
       <img src={rightShoe} alt="Right Shoe" className="shoe right-shoe" />
     </div>
