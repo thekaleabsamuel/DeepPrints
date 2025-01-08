@@ -1,0 +1,38 @@
+/* Container for glitter particles */
+.glitter-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Ensure it doesn't block clicks */
+    overflow: hidden;
+    z-index: 9998; /* Below the cursor but above other content */
+  }
+  
+  /* Glitter particle styles */
+  .glitter-particle {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 80%);
+    opacity: 0.7;
+    border-radius: 50%;
+    animation: shimmer 3s infinite ease-in-out;
+    filter: blur(2px);
+  }
+  
+  /* Animation for glitter shimmer */
+  @keyframes shimmer {
+    0% {
+      opacity: 0.5;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    100% {
+      opacity: 0.5;
+      transform: scale(0.8);
+    }
+  }
+  

@@ -4,7 +4,7 @@ import signImage from "../assets/direction.png"; // Replace with your directiona
 
 const DirectionalSigns = () => {
   const sections = [
-    { id: "home", label: "Home" },
+    { id: "home", label: "DeepPrints" },
     { id: "about", label: "About" },
     { id: "contact", label: "Contact" },
   ];

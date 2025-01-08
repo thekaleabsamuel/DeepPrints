@@ -7,6 +7,7 @@ import Hero from "./componentss/Sections/Hero";
 import About from "./componentss/Sections/About";
 import Contact from "./componentss/Sections/Contact";
 import LoadingScreen from "./componentss/LoadingScreen";
+// import GlitterEffect from "./componentss/GlitterEffect";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,6 +23,7 @@ function App() {
       ) : (
         <>
           <CustomCursor />
+          {/* <GlitterEffect /> */}
           <DirectionalSign />
           <main>
           <Hero/>

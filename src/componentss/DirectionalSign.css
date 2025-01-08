@@ -55,6 +55,7 @@
     pointer-events: auto; /* Make buttons clickable */
     transition: transform 0.3s ease;
     position: absolute;
+    
   }
   
   .sign-button:hover {
@@ -64,17 +65,17 @@
   
   /* Adjust buttons for specific signs */
   .sign-button-1 {
-    top: 20%; /* Adjust for your image */
-    left: 25%;
+    top: 24%; /* Adjust for your image */
+    left: 39%;
   }
   
   .sign-button-2 {
     top: 40%; /* Adjust for your image */
-    left: 50%;
+    left: 41%;
   }
   
   .sign-button-3 {
     top: 60%; /* Adjust for your image */
-    right: 20%;
+    right: 40%;
   }
   
