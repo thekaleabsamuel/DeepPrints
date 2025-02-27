@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Particles from "react-tsparticles";
+import { loadSlim } from "tsparticles-slim";
 import "./DirectionalSign.css";
-import signImage from "../assets/direction.png"; // Replace with your directional signs PNG
+import signImage from "../assets/picket2.png"; // Replace with your directional sign PNG
 
 const DirectionalSigns = () => {
+  const [opacity, setOpacity] = useState(1); // State to track particle opacity
+
   const sections = [
     { id: "home", label: "DeepPrints" },
     { id: "about", label: "About" },
@@ -13,9 +17,49 @@ const DirectionalSigns = () => {
     document.getElementById(id).scrollIntoView({ behavior: "smooth" });
   };
 
+  const particlesInit = async (engine) => {
+    await loadSlim(engine); // Load the slim version of tsparticles
+  };
+
+  // Handle scrolling effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const fadeStart = 100; // Start fading at this scroll position
+      const fadeEnd = 500; // Fully faded at this scroll position
+
+      // Calculate opacity (1 at top, 0 after fadeEnd)
+      const newOpacity = Math.max(0, Math.min(1, 1 - (scrollY - fadeStart) / (fadeEnd - fadeStart)));
+      setOpacity(newOpacity);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="directional-signs-container">
-      <h1 className="site-title">Welcome to Deep Prints</h1>
+      {/* Snowfall Effect with Dynamic Opacity */}
+      <Particles
+        id="tsparticles"
+        init={particlesInit}
+        options={{
+          background: { color: "transparent" },
+          particles: {
+            number: { value: 100, density: { enable: true, value_area: 800 } },
+            color: { value: "#ffffff" },
+            shape: { type: "circle" },
+            opacity: { value: opacity }, // Dynamic opacity
+            size: { value: 3, random: true },
+            move: { enable: true, speed: 1, direction: "bottom", out_mode: "out" },
+          },
+          interactivity: {
+            events: { onHover: { enable: false }, onClick: { enable: false } },
+          },
+        }}
+      />
+
+      <h1 className="site-title"></h1>
       <div className="directional-signs">
         <img src={signImage} alt="Directional Signs" className="sign-image" />
         <div className="sign-navigation">
@@ -30,6 +74,9 @@ const DirectionalSigns = () => {
           ))}
         </div>
       </div>
+
+      {/* Animated Sketched Grass */}
+      <div className="grass-container"></div>
     </div>
   );
 };
