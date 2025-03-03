@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 import "./DirectionalSign.css";
-import signImage from "../assets/picket2.png"; // Replace with your directional sign PNG
+import signImage from "../assets/picket3.png"; // Replace with your directional sign PNG
 
 const DirectionalSigns = () => {
   const [opacity, setOpacity] = useState(1); // State to track particle opacity
 
   const sections = [
     { id: "home", label: "DeepPrints" },
-    { id: "about", label: "About" },
+    { id: "about", label: "Our Mission" },
+    { id: "what", label: "What We Do"},
     { id: "contact", label: "Contact" },
   ];
 
