@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 import "./DirectionalSign.css";
-import signImage from "../assets/picket3.png"; // Replace with your directional sign PNG
+
+const SignModel = () => {
+  const { scene } = useGLTF("/src/assets/picket2.glb"); // Load 3D sign
+  return <primitive object={scene} scale={1.5} position={[0, -1, 0]} />;
+};
 
 const DirectionalSigns = () => {
-  const [opacity, setOpacity] = useState(1); // State to track particle opacity
+  const [opacity, setOpacity] = useState(1);
 
   const sections = [
     { id: "home", label: "DeepPrints" },
     { id: "about", label: "Our Mission" },
-    { id: "what", label: "What We Do"},
+    { id: "what", label: "What We Do" },
     { id: "contact", label: "Contact" },
   ];
 
@@ -19,17 +25,13 @@ const DirectionalSigns = () => {
   };
 
   const particlesInit = async (engine) => {
-    await loadSlim(engine); // Load the slim version of tsparticles
+    await loadSlim(engine);
   };
 
-  // Handle scrolling effect
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const fadeStart = 100; // Start fading at this scroll position
-      const fadeEnd = 500; // Fully faded at this scroll position
-
-      // Calculate opacity (1 at top, 0 after fadeEnd)
+      const fadeStart = 100, fadeEnd = 500;
       const newOpacity = Math.max(0, Math.min(1, 1 - (scrollY - fadeStart) / (fadeEnd - fadeStart)));
       setOpacity(newOpacity);
     };
@@ -40,7 +42,6 @@ const DirectionalSigns = () => {
 
   return (
     <div className="directional-signs-container">
-      {/* Snowfall Effect with Dynamic Opacity */}
       <Particles
         id="tsparticles"
         init={particlesInit}
@@ -50,7 +51,7 @@ const DirectionalSigns = () => {
             number: { value: 100, density: { enable: true, value_area: 800 } },
             color: { value: "#ffffff" },
             shape: { type: "circle" },
-            opacity: { value: opacity }, // Dynamic opacity
+            opacity: { value: opacity },
             size: { value: 3, random: true },
             move: { enable: true, speed: 1, direction: "bottom", out_mode: "out" },
           },
@@ -62,7 +63,15 @@ const DirectionalSigns = () => {
 
       <h1 className="site-title"></h1>
       <div className="directional-signs">
-        <img src={signImage} alt="Directional Signs" className="sign-image" />
+        {/* 3D Model */}
+        <Canvas camera={{ position: [0, 1.5, 5] }}>
+          <ambientLight intensity={0.5} />
+          <directionalLight position={[2, 2, 5]} intensity={1} />
+          <SignModel />
+          <OrbitControls />
+        </Canvas>
+
+        {/* Navigation Buttons */}
         <div className="sign-navigation">
           {sections.map((section, index) => (
             <button
@@ -76,7 +85,6 @@ const DirectionalSigns = () => {
         </div>
       </div>
 
-      {/* Animated Sketched Grass */}
       <div className="grass-container"></div>
     </div>
   );

@@ -33,6 +33,30 @@
   display: block;
 }
 
+.sign-button-1 {
+  top: 20%;
+  left: 38%;
+  transform: translate(-10px, 0px) rotate(0deg);
+}
+
+.sign-button-2 {
+  top: 35%;
+  left: 42%;
+  transform: translate(5px, 13px) rotate(0deg);
+}
+
+.sign-button-3 {
+  top: 55%;
+  right: 40%;
+  transform: translate(2px, -14px) rotate(0deg);
+}
+
+.sign-button-4 {
+  top: 75%;
+  right: 38%;
+  transform: translate(-6px, -21px) rotate(0deg);
+}
+
 /* Navigation buttons overlay */
 .sign-navigation {
   position: absolute;
